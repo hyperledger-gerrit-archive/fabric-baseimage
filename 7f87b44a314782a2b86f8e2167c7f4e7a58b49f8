@@ -1,0 +1,9 @@
+Verified+1: Greg Haskins <gregory.haskins@gmail.com>
+Code-Review+2: Srinivasan Muralidharan <muralisr@us.ibm.com>
+Code-Review+2: Gabor Hosszu <gabor@digitalasset.com>
+Code-Review+2: Christopher Ferris <chrisfer@us.ibm.com>
+Submitted-by: Christopher Ferris <chrisfer@us.ibm.com>
+Submitted-at: Tue, 20 Sep 2016 21:00:43 +0000
+Reviewed-on: http://gerrit.hyperledger.org/r/1133
+Project: fabric-baseimage
+Branch: refs/heads/master
