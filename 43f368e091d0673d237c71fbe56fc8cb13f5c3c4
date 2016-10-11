@@ -1,0 +1,8 @@
+Verified+1: Hyperledger Jobbuilder <jobbuilder@jenkins.hyperledger.org>
+Code-Review+2: Gari Singh <gari.r.singh@gmail.com>
+Code-Review+2: Gabor Hosszu <gabor@digitalasset.com>
+Submitted-by: Christopher Ferris <chrisfer@us.ibm.com>
+Submitted-at: Tue, 11 Oct 2016 12:52:51 +0000
+Reviewed-on: http://gerrit.hyperledger.org/r/1559
+Project: fabric-baseimage
+Branch: refs/heads/master
