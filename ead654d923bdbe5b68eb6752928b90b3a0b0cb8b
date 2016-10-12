@@ -1,0 +1,8 @@
+Code-Review+2: Jonathan Levi <jonathan@levi.name>
+Verified+1: Hyperledger Jobbuilder <jobbuilder@jenkins.hyperledger.org>
+Code-Review+2: Christopher Ferris <chrisfer@us.ibm.com>
+Submitted-by: Christopher Ferris <chrisfer@us.ibm.com>
+Submitted-at: Wed, 12 Oct 2016 14:31:09 +0000
+Reviewed-on: http://gerrit.hyperledger.org/r/1493
+Project: fabric-baseimage
+Branch: refs/heads/master
