@@ -164,8 +164,8 @@ then
     sed -ibak 's/ifneq ($(MACHINE),ppc64)/ifeq (,$(findstring ppc64,$(MACHINE)))/g' Makefile
 fi
 
-PORTABLE=1 make shared_lib
-INSTALL_PATH=/usr/local make install-shared
+PORTABLE=1 make shared_lib static_lib
+INSTALL_PATH=/usr/local make install-shared install-static
 ldconfig
 cd ~/
 
