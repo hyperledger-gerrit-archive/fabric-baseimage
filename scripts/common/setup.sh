@@ -20,6 +20,7 @@ MACHINE=`uname -m`
 
 # Set Go environment variables needed by other scripts
 export GOPATH="/opt/gopath"
+export GOROOT="/opt/go"
 
 # ----------------------------------------------------------------
 # Install Golang
@@ -38,7 +39,6 @@ then
    git checkout release-branch.go1.6-p256
    export GOROOT_BOOTSTRAP=/tmp/go
    ./make.bash
-   export GOROOT="/opt/go"
 elif [ x$MACHINE = xppc64le ]
 then
    wget ftp://ftp.unicamp.br/pub/linuxpatch/toolchain/at/ubuntu/dists/trusty/at9.0/binary-ppc64el/advance-toolchain-at9.0-golang_9.0-3_ppc64el.deb
@@ -48,10 +48,8 @@ then
    update-alternatives --install /usr/bin/go go /usr/local/go/bin/go 9
    update-alternatives --install /usr/bin/gofmt gofmt /usr/local/go/bin/gofmt 9
 
-   export GOROOT="/usr/local/go"
+   ln -s /usr/local/go $GOROOT
 else
-   export GOROOT="/opt/go"
-
    ARCH=`uname -m | sed 's|i686|386|' | sed 's|x86_64|amd64|'`
    GO_VER=1.7.1
 
