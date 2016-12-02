@@ -147,11 +147,14 @@ cd ~/
 # ----------------------------------------------------------------
 # Install rocksdb
 # ----------------------------------------------------------------
+ROCKSDB_VER=4.1
+ROCKSDB_PKG=v$ROCKSDB_VER.tar.gz
+
 apt-get install -y libsnappy-dev zlib1g-dev libbz2-dev
 cd /tmp
-git clone https://github.com/facebook/rocksdb.git
-cd rocksdb
-git checkout tags/v4.1
+wget --quiet https://github.com/facebook/rocksdb/archive/$ROCKSDB_PKG
+tar xpzf $ROCKSDB_PKG
+cd rocksdb-$ROCKSDB_VER
 if [ x$MACHINE = xs390x ]
 then
     echo There were some bugs in 4.1 for z/p, dev stream has the fix, living dangereously, fixing in place
