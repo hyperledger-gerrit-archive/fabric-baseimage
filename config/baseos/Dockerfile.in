@@ -1,0 +1,6 @@
+FROM _DOCKER_BASE_
+COPY scripts /tmp/scripts
+RUN cd /tmp/scripts && \
+    common/init.sh && \
+    common/cleanup.sh && \
+    rm -rf /tmp/scripts
