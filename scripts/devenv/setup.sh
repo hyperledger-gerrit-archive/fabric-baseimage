@@ -13,6 +13,11 @@ echo deb https://apt.dockerproject.org/repo ubuntu-xenial main > /etc/apt/source
 # Update system
 apt-get update -qq
 
+# Install softhsm2
+
+apt-get install softhsm2
+softhsm2-util --init-token --slot 0 --label "My token 1" --so-pin 1234 --pin 98765432
+
 # Install docker
 apt-get install -y linux-image-extra-$(uname -r) apparmor docker-engine
 

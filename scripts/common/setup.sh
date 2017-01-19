@@ -142,6 +142,14 @@ make install
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 cd ~/
 
+# Install softhsm2
+
+if [ $ARCH = s390x ]
+then
+    apt-get -y install softhsm2
+    softhsm2-util --init-token --slot 0 --label "My token 1" --so-pin 1234 --pin 98765432
+fi
+
 # Make our versioning persistent
 echo $BASEIMAGE_RELEASE > /etc/hyperledger-baseimage-release
 
