@@ -13,6 +13,10 @@ echo deb https://apt.dockerproject.org/repo ubuntu-xenial main > /etc/apt/source
 # Update system
 apt-get update -qq
 
+# Install softhsm2
+
+apt-get install softhsm2
+
 # Install docker
 apt-get install -y linux-image-extra-$(uname -r) apparmor docker-engine
 
