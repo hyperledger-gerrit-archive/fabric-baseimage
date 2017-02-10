@@ -20,9 +20,9 @@ If a component is found to be both broadly applicable and expensive to build JIT
 
 ## Usage Pattern 1 - Local baseimage builds for testing a proposed change
 
-* "make vagrant" will build just the vagrant image and install it into the local environment as "hyperledger/fabric-baseimage:v0", making it suitable to local testing.
+* `make vagrant-local` will build just the vagrant image and install it into the local environment as "hyperledger/fabric-baseimage:v0", making it suitable to local testing.
   * To utilize the new base image in your local tests, run `vagrant destroy` then `USE_LOCAL_BASEIMAGE=true vagrant up`, also preface `vagrant ssh` as `USE_LOCAL_BASEIMAGE=true vagrant ssh` or simply export that variable, or Vagrant will fail to find the ssh key.
-* "make docker-local" will build just the docker image and commit it to your local environment as "hyperledger/fabric-baseimage". The docker image is also tagged with architecture and release details.
+* `make docker-local` will build just the docker image and commit it to your local environment as "hyperledger/fabric-baseimage". The docker image is also tagged with architecture and release details.
 
 ## Usage Pattern 2 - Release manager promoting a new base image to the public repositories
 
