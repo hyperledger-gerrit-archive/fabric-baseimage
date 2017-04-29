@@ -1,0 +1,9 @@
+Verified+1: Greg Haskins <gregory.haskins@gmail.com>
+Verified+1: Hyperledger Jobbuilder <jobbuilder@jenkins.hyperledger.org>
+Code-Review+2: Binh Nguyen <binhn@us.ibm.com>
+Code-Review+2: Srinivasan Muralidharan <muralisr@us.ibm.com>
+Submitted-by: Srinivasan Muralidharan <muralisr@us.ibm.com>
+Submitted-at: Sat, 29 Apr 2017 01:27:52 +0000
+Reviewed-on: http://gerrit.hyperledger.org/r/8605
+Project: fabric-baseimage
+Branch: refs/heads/master
