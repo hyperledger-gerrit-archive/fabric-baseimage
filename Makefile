@@ -7,7 +7,7 @@
 DOCKER_NS ?= hyperledger
 BASENAME ?= $(DOCKER_NS)/fabric
 VERSION ?= 0.4.1
-IS_RELEASE=false
+IS_RELEASE=true
 
 ARCH=$(shell uname -m)
 BASE_VERSION ?= $(ARCH)-$(VERSION)
@@ -57,7 +57,6 @@ build/docker/%/$(DUMMY):
 
 build/docker/%/.push: build/docker/%/$(DUMMY)
 	@docker login \
-		--email=$(DOCKER_HUB_EMAIL) \
 		--username=$(DOCKER_HUB_USERNAME) \
 		--password=$(DOCKER_HUB_PASSWORD)
 	@docker push $(BASENAME)-$(patsubst build/docker/%/.push,%,$@):$(DOCKER_TAG)
