@@ -1,0 +1,8 @@
+Verified+1: Hyperledger Jobbuilder <jobbuilder@jenkins.hyperledger.org>
+Code-Review+2: Jason Yellick <jyellick@us.ibm.com>
+Code-Review+2: David Enyeart <enyeart@us.ibm.com>
+Submitted-by: David Enyeart <enyeart@us.ibm.com>
+Submitted-at: Mon, 22 Jan 2018 21:59:28 +0000
+Reviewed-on: https://gerrit.hyperledger.org/r/17063
+Project: fabric-baseimage
+Branch: refs/heads/master
