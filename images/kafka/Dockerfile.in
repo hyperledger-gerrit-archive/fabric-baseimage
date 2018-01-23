@@ -4,6 +4,10 @@
 #
 FROM _BASE_NS_/fabric-baseimage:_BASE_TAG_
 
+#Add your proxy settings accordingly when have to 
+#ENV http_proxy "http://username:password@your.proxy.address:proxy.port/"
+#ENV https_proxy "http://username:password@your.proxy.address:proxy.port/"
+
 ENV SCALA_VERSION=2.11 \
     KAFKA_VERSION=0.10.2.1 \
     KAFKA_DOWNLOAD_SHA1=8449B5C32632FFCD2A159FC85FD1ED10C86C5670

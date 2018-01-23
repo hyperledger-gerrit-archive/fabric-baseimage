@@ -4,6 +4,12 @@
 #
 FROM _BASE_NS_/fabric-baseimage:_BASE_TAG_
 
+#Add your proxy settings accordingly when have to 
+#ENV http_proxy "http://username:password@your.proxy.address:proxy.port/"
+#ENV https_proxy "http://username:password@your.proxy.address:proxy.port/"
+
+
+
 # Based on https://github.com/klaemo/docker-couchdb/blob/master/2.0.0/Dockerfile
 
 # Add CouchDB user account
