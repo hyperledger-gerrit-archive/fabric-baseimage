@@ -42,6 +42,14 @@ if [ "$1" = "${KAFKA_EXE}" ]; then
     export KAFKA_BROKER_ID=-1
   fi
 
+  # fix log.retention.(time) to -1 so time-based log retention is disabled
+  # even though this is strictly REQUIRED at present, we still respect user
+  # envvar here, because we want user to be able to set this property when
+  # we enable orderer ledger pruning.
+  if [ -z "$KAFKA_LOG_RETENTION_MS" ] ; then
+    export KAFKA_LOG_RETENTION_MS=-1
+  fi
+
   # add newline to end of server.properties if missing
   tail -c 1 ${KAFKA_SERVER_PROPERTIES} | read -r _ || printf "\n" >> ${KAFKA_SERVER_PROPERTIES}
 
