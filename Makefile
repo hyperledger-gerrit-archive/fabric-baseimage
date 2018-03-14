@@ -107,7 +107,8 @@ build/image/kafka/payload:      images/kafka/docker-entrypoint.sh \
 				images/kafka/kafka-run-class.sh
 build/image/couchdb/payload:	images/couchdb/docker-entrypoint.sh \
 				images/couchdb/local.ini \
-				images/couchdb/vm.args
+				images/couchdb/vm.args \
+				images/couchdb/create_system_db.sh
 
 .PRECIOUS: build/image/%/Dockerfile
 
