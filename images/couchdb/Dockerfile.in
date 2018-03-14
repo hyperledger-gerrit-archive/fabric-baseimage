@@ -105,12 +105,23 @@ COPY payload/local.ini /opt/couchdb/etc/default.d/
 COPY payload/vm.args /opt/couchdb/etc/
 
 COPY payload/docker-entrypoint.sh /
+COPY payload/create_system_db.sh /opt/couchdb/
 
 # Setup directories and permissions
 RUN chown -R couchdb:couchdb /opt/couchdb/etc/default.d/ /opt/couchdb/etc/vm.args
 
 WORKDIR /opt/couchdb
 EXPOSE 5984 4369 9100
+
+#Start couchdb and create the system databases
+RUN chmod +x /opt/couchdb/create_system_db.sh \
+  && (/opt/couchdb/bin/couchdb & ) \
+  && (/opt/couchdb/create_system_db.sh _replicator & ) \
+  && (/opt/couchdb/create_system_db.sh _users & ) \
+  && /opt/couchdb/create_system_db.sh _global_changes \
+  #allow time for database creation to complete
+  && sleep 10
+
 VOLUME ["/opt/couchdb/data"]
 
 ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
