@@ -111,7 +111,8 @@ build/image/kafka/payload:      images/kafka/docker-entrypoint.sh \
 build/image/couchdb/payload:	images/couchdb/docker-entrypoint.sh \
 				images/couchdb/10-docker-default.ini \
 				images/couchdb/20-fabric-default.ini \
-				images/couchdb/vm.args
+				images/couchdb/vm.args \
+				images/couchdb/create_system_db.sh
 
 .PRECIOUS: build/image/%/Dockerfile
 
