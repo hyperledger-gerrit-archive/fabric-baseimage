@@ -22,7 +22,9 @@
 +K true
 
 # Start a pool of asynchronous IO threads
-+A 16
++A 0
 
 # Comment this line out to enable the interactive Erlang shell on startup
 +Bd -noinput
+
+-smp disable
