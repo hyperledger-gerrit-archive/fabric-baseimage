@@ -39,19 +39,21 @@ if [ "$1" = '/opt/couchdb/bin/couchdb' ]; then
 	fi
 
 	if [ "$COUCHDB_USER" ] && [ "$COUCHDB_PASSWORD" ]; then
+		# Remove [admins]
+		sed -i -e '/\[admins\]/,+1d' /opt/couchdb/etc/local.ini
 		# Create admin
-		printf "[admins]\n%s = %s\n" "$COUCHDB_USER" "$COUCHDB_PASSWORD" >> /opt/couchdb/etc/local.d/docker.ini
-		chown couchdb:couchdb /opt/couchdb/etc/local.d/docker.ini
+		printf "[admins]\n%s = %s\n" "$COUCHDB_USER" "$COUCHDB_PASSWORD" >> /opt/couchdb/etc/local.ini
 	fi
 
 	if [ "$COUCHDB_SECRET" ]; then
+		# Remove [couch_httpd_auth]
+		sed -i -e '/\[couch_httpd_auth\]/,+1d' /opt/couchdb/etc/local.ini
 		# Set secret
-		printf "[couch_httpd_auth]\nsecret = %s\n" "$COUCHDB_SECRET" >> /opt/couchdb/etc/local.d/docker.ini
-		chown couchdb:couchdb /opt/couchdb/etc/local.d/docker.ini
+		printf "[couch_httpd_auth]\nsecret = %s\n" "$COUCHDB_SECRET" >> /opt/couchdb/etc/local.ini
 	fi
 
 	# if we don't find an [admins] section followed by a non-comment, display a warning
-	if ! grep -Pzoqr '\[admins\]\n[^;]\w+' /opt/couchdb/etc/default.d/*.ini /opt/couchdb/etc/local.d/*.ini; then
+	if ! grep -Pzoqr '\[admins\]\n[^;]\w+' /opt/couchdb/etc/default.d/*.ini /opt/couchdb/etc/*.ini /opt/couchdb/etc/local.d/*.ini; then
 		# The - option suppresses leading tabs but *not* spaces. :)
 		cat >&2 <<-'EOWARN'
 			****************************************************
