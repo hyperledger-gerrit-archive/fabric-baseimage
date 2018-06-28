@@ -22,7 +22,8 @@ endif
 DOCKER_BASE_amd64=ubuntu:xenial
 DOCKER_BASE_s390x=s390x/debian:jessie
 DOCKER_BASE_ppc64le=ppc64le/ubuntu:xenial
-DOCKER_BASE_armv7l=armv7/armhf-ubuntu
+DOCKER_BASE_arm=armv7/armhf-ubuntu:xenial
+DOCKER_BASE_arm64=arm64v8/ubuntu:xenial
 
 DOCKER_BASE=$(DOCKER_BASE_$(ARCH))
 
