@@ -12,7 +12,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     curl \
     erlang-nox \
     erlang-reltool \
-    libicu55 \
+    _LIBICU_ \
     libmozjs185-1.0 \
     openssl \
   && rm -rf /var/lib/apt/lists/*
