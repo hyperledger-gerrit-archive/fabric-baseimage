@@ -30,8 +30,8 @@ export GOROOT="/opt/go"
 # Install Golang
 # ----------------------------------------------------------------
 mkdir -p $GOPATH
-ARCH=`uname -m | sed 's|i686|386|' | sed 's|x86_64|amd64|'`
-BINTARGETS="x86_64 ppc64le s390x"
+ARCH=`uname -m | sed 's|i686|386|' | sed 's|x86_64|amd64|' | sed 's|armv7l|armv6l|' | sed 's|aarch64|arm64|'`
+BINTARGETS="x86_64 ppc64le s390x armv7l armv6l aarch64"
 GO_VER=1.10
 
 # Install Golang binary if found in BINTARGETS
@@ -69,7 +69,7 @@ EOF
 # ----------------------------------------------------------------
 NODE_VER=8.11.3
 
-ARCH=`uname -m | sed 's|i686|x86|' | sed 's|x86_64|x64|'`
+ARCH=`uname -m | sed 's|i686|x86|' | sed 's|x86_64|x64|' | sed 's|aarch64|arm64|'`
 NODE_PKG=node-v$NODE_VER-linux-$ARCH.tar.gz
 SRC_PATH=/tmp/$NODE_PKG
 
