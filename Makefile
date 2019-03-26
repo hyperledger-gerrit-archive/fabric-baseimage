@@ -1,5 +1,6 @@
 #
 # Copyright Greg Haskins All Rights Reserved.
+# Copyright IBM Corp. All Rights Reserved.
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -29,10 +30,6 @@ DOCKER_TAG=$(BASE_VERSION)-$(EXTRA_VERSION)
 else
 DOCKER_TAG=$(BASE_VERSION)
 endif
-
-LIBICU_amd64=libicu55
-LIBICU_s390x=libicu57
-LIBICU=$(LIBICU_$(ARCH))
 
 DOCKER_BASE_amd64=ubuntu:xenial
 DOCKER_BASE_s390x=s390x/debian:stretch
@@ -111,35 +108,13 @@ kafka: build/image/kafka/.dummy
 
 zookeeper: build/image/zookeeper/.dummy
 
-build/image/%/payload:
-	mkdir -p $@
-	cp $^ $@
+#build/image/couchdb/.dummy: BUILD_ARGS=--build-arg LIBICU=$(LIBICU)
 
-build/image/zookeeper/payload:  images/zookeeper/docker-entrypoint.sh
-build/image/kafka/payload:      images/kafka/docker-entrypoint.sh \
-				images/kafka/kafka-run-class.sh
-build/image/couchdb/payload:	images/couchdb/docker-entrypoint.sh \
-				images/couchdb/10-docker-default.ini \
-				images/couchdb/20-fabric-default.ini \
-				images/couchdb/vm.args
-
-.PRECIOUS: build/image/%/Dockerfile
-
-build/image/%/Dockerfile: images/%/Dockerfile.in
-	@cat $< \
-		| sed -e 's/_BASE_NS_/$(BASE_DOCKER_NS)/g' \
-		| sed -e 's/_NS_/$(DOCKER_NS)/g' \
-		| sed -e 's/_BASE_TAG_/$(DOCKER_TAG)/g' \
-		| sed -e 's/_TAG_/$(BASE_VERSION)/g' \
-		| sed -e 's/_LIBICU_/$(LIBICU)/g' \
-		> $@
-	@echo LABEL $(BASE_DOCKER_LABEL).version=$(PROJECT_VERSION) \\>>$@
-	@echo "     " $(BASE_DOCKER_LABEL).base.version=$(BASE_VERSION)>>$@
-
-build/image/%/.dummy: Makefile build/image/%/payload build/image/%/Dockerfile
+build/image/%/.dummy:
+	@mkdir -p $(@D)
 	$(eval TARGET = ${patsubst build/image/%/.dummy,%,${@}})
-	@echo "Building docker $(TARGET)-image"
-	$(DBUILD) -t $(DOCKER_NS)/fabric-$(TARGET) $(@D)
+	@echo "Docker: building $(TARGET) image"
+	$(DBUILD) ${BUILD_ARGS} -t $(DOCKER_NS)/fabric-$(TARGET) -f images/${TARGET}/Dockerfile images/${TARGET}
 	docker tag $(DOCKER_NS)/fabric-$(TARGET) $(DOCKER_NS)/fabric-$(TARGET):$(DOCKER_TAG)
 	@touch $@
 
