@@ -1,0 +1,8 @@
+Verified+1: Hyperledger Jobbuilder <jobbuilder@jenkins.hyperledger.org>
+Code-Review+2: Matthew Sykes <sykesmat@us.ibm.com>
+Code-Review+2: Gari Singh <gari.r.singh@gmail.com>
+Submitted-by: Gari Singh <gari.r.singh@gmail.com>
+Submitted-at: Tue, 04 Jun 2019 20:49:32 +0000
+Reviewed-on: https://gerrit.hyperledger.org/r/c/fabric-baseimage/+/31307
+Project: fabric-baseimage
+Branch: refs/heads/master
